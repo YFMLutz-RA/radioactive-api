@@ -6,7 +6,7 @@
     "removeComments": true,
     "module": "commonjs",
     "target": "es2019",
-    "moduleResolution": "node",
+    "moduleResolution": "node16",
     "esModuleInterop": true,
     "skipLibCheck": true,
     "sourceMap": false
