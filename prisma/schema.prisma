@@ -1,0 +1,67 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  Owner
+  Admin
+  Developer
+  System
+  Community
+  Traffic
+  Game
+}
+
+model Tenant {
+  id        String          @id @default(uuid())
+  slug      String          @unique
+  name      String
+  status    String          @default("active")
+  members   Membership[]
+  createdAt DateTime        @default(now())
+  profile   StationProfile?
+  features  FeatureFlag[]
+}
+
+model User {
+  id            String       @id @default(uuid())
+  email         String       @unique
+  name          String?
+  passwordHash  String
+  isGlobalAdmin Boolean      @default(false)
+  memberships   Membership[]
+  createdAt     DateTime     @default(now())
+}
+
+model Membership {
+  user     User   @relation(fields: [userId], references: [id])
+  userId   String
+  tenant   Tenant @relation(fields: [tenantId], references: [id])
+  tenantId String
+  role     Role
+
+  @@id([userId, tenantId])
+}
+
+model StationProfile {
+  tenantId  String  @id
+  tenant    Tenant  @relation(fields: [tenantId], references: [id])
+  streamUrl String?
+  timezone  String?
+  locale    String?
+}
+
+model FeatureFlag {
+  id       String @id @default(uuid())
+  tenantId String
+  tenant   Tenant @relation(fields: [tenantId], references: [id])
+  key      String
+  value    String
+
+  @@unique([tenantId, key])
+}
