@@ -4,9 +4,9 @@
     "outDir": "./dist",
     "declaration": false,
     "removeComments": true,
-    "module": "commonjs",
-    "target": "es2019",
-    "moduleResolution": "node16",
+    "module": "Node16",
+    "moduleResolution": "Node16",
+    "target": "ES2019",
     "esModuleInterop": true,
     "skipLibCheck": true,
     "sourceMap": false
