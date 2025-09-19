@@ -3,10 +3,18 @@
     "target": "ES2019",
     "module": "Node16",
     "moduleResolution": "Node16",
+    "lib": ["ES2019"],
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "strict": true
+    "strict": true,
+    "resolveJsonModule": true,
+    "baseUrl": "./",
+    "incremental": true,
+    "types": ["node", "jest"]
   }
 }
