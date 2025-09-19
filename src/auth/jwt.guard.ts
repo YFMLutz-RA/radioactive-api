@@ -1,3 +1,4 @@
+declare module 'jsonwebtoken' { export function verify(token: string, secret: string): any; }
 import { CanActivate, ExecutionContext, Injectable, UnauthorizedException } from '@nestjs/common';
 import { verify } from 'jsonwebtoken';
 
