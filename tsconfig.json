@@ -15,6 +15,6 @@
     "resolveJsonModule": true,
     "baseUrl": "./",
     "incremental": true,
-    "types": ["node", "jest"]
+    "types": ["node"]
   }
 }
